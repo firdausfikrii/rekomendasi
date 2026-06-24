@@ -15,11 +15,27 @@ class RecommendationController extends Controller
             'grades'
         )->findOrFail($studentId);
 
-        $courses = Course::all();
+       $courses = \App\Models\Course::all();
 
-        $results = [];
+$careerMap = [
 
-        foreach ($courses as $course) {
+    // Rekayasa Perangkat Lunak
+    'Software Engineer' => 'Rekayasa Perangkat Lunak',
+    'Mobile Developer' => 'Rekayasa Perangkat Lunak',
+    'Game Developer' => 'Rekayasa Perangkat Lunak',
+
+    // AI & Data
+    'Data Scientist' => 'Kecerdasan Buatan & Data',
+    'AI Engineer' => 'Kecerdasan Buatan & Data',
+
+    // Jaringan & Keamanan
+    'Cyber Security Analyst' => 'Jaringan & Keamanan Siber',
+    'Cloud Engineer' => 'Jaringan & Keamanan Siber',
+];
+
+$results = [];
+
+foreach ($courses as $course) {
 
             $score = 0;
 
@@ -37,16 +53,14 @@ class RecommendationController extends Controller
             }
 
             /*
-             Karir
-            */
-
-            if (
-                strtolower($student->career_preference)
-                ==
-                strtolower($course->bidang)
-            ) {
-                $score += 25;
-            }
+KARIR
+*/
+if (
+    isset($careerMap[$student->career_preference]) &&
+    $careerMap[$student->career_preference] == $course->bidang
+) {
+    $score += 25;
+}
 
             /*
              Nilai
@@ -82,11 +96,12 @@ class RecommendationController extends Controller
                 'interest_score' => $interestMatch ? 40 : 0,
 
                 'career_score' =>
-                strtolower($student->career_preference)
-                    ==
-                    strtolower($course->bidang)
-                    ? 25
-                    : 0,
+(
+    isset($careerMap[$student->career_preference]) &&
+    $careerMap[$student->career_preference] == $course->bidang
+)
+? 25
+: 0,
 
                 'grade_score' =>
                 round($avgGrade * 0.35, 2),
@@ -149,7 +164,7 @@ class RecommendationController extends Controller
             'Apakah minat sesuai bidang?' => 'Ya',
             'Apakah nilai rata-rata > 80?' => 'Ya',
             'Apakah preferensi karir sesuai?' => 'Ya',
-            'Hasil' => $bestPackages[0]['package']
+            'hasil' => $bestPackages[0]['package']
         ];
         return view(
             'recommendation',
@@ -222,11 +237,27 @@ class RecommendationController extends Controller
         $grade = $request->grade;
         $career = $request->career;
 
-        $courses = \App\Models\Course::all();
+       $courses = \App\Models\Course::all();
 
-        $results = [];
+$careerMap = [
 
-        foreach ($courses as $course) {
+    // Rekayasa Perangkat Lunak
+    'Software Engineer' => 'Rekayasa Perangkat Lunak',
+    'Mobile Developer' => 'Rekayasa Perangkat Lunak',
+    'Game Developer' => 'Rekayasa Perangkat Lunak',
+
+    // AI & Data
+    'Data Scientist' => 'Kecerdasan Buatan & Data',
+    'AI Engineer' => 'Kecerdasan Buatan & Data',
+
+    // Jaringan & Keamanan
+    'Cyber Security Analyst' => 'Jaringan & Keamanan Siber',
+    'Cloud Engineer' => 'Jaringan & Keamanan Siber',
+];
+
+$results = [];
+
+foreach ($courses as $course) {
 
             $score = 0;
 
@@ -237,12 +268,15 @@ class RecommendationController extends Controller
                 $score += 40;
             }
 
-            /*
-        KARIR
-        */
-            if (strtolower($career) == strtolower($course->bidang)) {
-                $score += 25;
-            }
+        /*
+KARIR
+*/
+if (
+    isset($careerMap[$career]) &&
+    $careerMap[$career] == $course->bidang
+) {
+    $score += 25;
+}
 
             /*
         NILAI
@@ -253,7 +287,13 @@ class RecommendationController extends Controller
                 'course' => $course->nama,
                 'bidang' => $course->bidang,
                 'interest_score' => ($interest == $course->bidang) ? 40 : 0,
-                'career_score' => (strtolower($career) == strtolower($course->bidang)) ? 25 : 0,
+                'career_score' =>
+(
+    isset($careerMap[$career]) &&
+    $careerMap[$career] == $course->bidang
+)
+? 25
+: 0,
                 'grade_score' => round($grade * 0.35, 2),
                 'score' => round($score, 2)
             ];
@@ -301,4 +341,17 @@ class RecommendationController extends Controller
             )
         );
     }
+
+    public function students()
+{
+    $students = Student::with(
+        'interests',
+        'grades'
+    )->get();
+
+    return view(
+        'students',
+        compact('students')
+    );
+}
 }

@@ -53,7 +53,7 @@
                     <label>Nilai Rata-rata</label>
 
                     <input
-                        type="number"
+                        type="is_float"
                         name="grade"
                         class="form-control"
                         min="0"
@@ -69,9 +69,16 @@
                         name="career"
                         class="form-select">
 
-                        <option>Rekayasa Perangkat Lunak</option>
-<option>Kecerdasan Buatan & Data</option>
-<option>Jaringan & Keamanan Siber</option>
+
+    <option>Software Engineer</option>
+    <option>Mobile Developer</option>
+    <option>Game Developer</option>
+
+    <option>Data Scientist</option>
+    <option>AI Engineer</option>
+
+    <option>Cyber Security Analyst</option>
+    <option>Cloud Engineer</option>
 
                     </select>
 

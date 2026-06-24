@@ -27,3 +27,8 @@ Route::get(
     '/recommend/{student}',
     [RecommendationController::class, 'generate']
 );
+
+Route::get(
+    '/students',
+    [RecommendationController::class, 'students']
+);

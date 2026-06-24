@@ -39,7 +39,31 @@ class GradeSeeder extends Seeder
                 'student_id'=>3,
                 'course_name'=>'Big Data',
                 'grade'=>'A-'
-            ]
+            ],
+
+            [
+    'student_id'=>4,
+    'course_name'=>'Data Mining',
+    'grade'=>'A'
+],
+
+[
+    'student_id'=>4,
+    'course_name'=>'Machine Learning Dasar',
+    'grade'=>'A-'
+],
+
+[
+    'student_id'=>5,
+    'course_name'=>'Rekayasa Perangkat Lunak',
+    'grade'=>'A'
+],
+
+[
+    'student_id'=>5,
+    'course_name'=>'Pemrograman Mobile',
+    'grade'=>'B+'
+]
         ]);
     }
 }

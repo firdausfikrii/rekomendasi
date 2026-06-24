@@ -31,5 +31,14 @@ class StudentInterestSeeder extends Seeder
                 'interest_id' => 2
             ]
         ]);
+        DB::table('student_interest')->insert([
+    'student_id' => 4,
+    'interest_id' => 2
+]);
+
+DB::table('student_interest')->insert([
+    'student_id' => 5,
+    'interest_id' => 1
+]);
     }
 }

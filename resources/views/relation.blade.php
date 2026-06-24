@@ -79,6 +79,82 @@
 
         </div>
 
+        <!-- HIMPUNAN MINAT -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-info text-white">
+        Himpunan Minat (I)
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            @php
+                $allInterests = $students
+                    ->flatMap(fn($s) => $s->interests)
+                    ->unique('id');
+            @endphp
+
+            @foreach($allInterests as $interest)
+
+            <div class="col-md-4 mb-3">
+
+                <div class="card border-info">
+
+                    <div class="card-body text-center">
+
+                        <h6 class="mb-0">
+                            {{ $interest->name }}
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            @endforeach
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- NOTASI HIMPUNAN MINAT -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-secondary text-white">
+        Notasi Himpunan Minat
+    </div>
+
+    <div class="card-body">
+
+        <h5>
+
+            I = {
+
+            @foreach($allInterests as $interest)
+
+                {{ $interest->name }}
+
+                @if(!$loop->last)
+                    ,
+                @endif
+
+            @endforeach
+
+            }
+
+        </h5>
+
+    </div>
+
+</div>
+
         <!-- RELASI -->
         <div class="card shadow-sm mb-4">
 
