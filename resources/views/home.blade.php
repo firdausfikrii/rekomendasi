@@ -40,11 +40,9 @@
                         name="interest"
                         class="form-select">
 
-                        <option>AI</option>
-                        <option>Data Science</option>
-                        <option>Cyber Security</option>
-                        <option>IoT</option>
-                        <option>Software Engineering</option>
+                        <option>Rekayasa Perangkat Lunak</option>
+<option>Kecerdasan Buatan & Data</option>
+<option>Jaringan & Keamanan Siber</option>
 
                     </select>
 
@@ -71,11 +69,9 @@
                         name="career"
                         class="form-select">
 
-                        <option>AI</option>
-                        <option>Data Science</option>
-                        <option>Cyber Security</option>
-                        <option>IoT</option>
-                        <option>Software Engineering</option>
+                        <option>Rekayasa Perangkat Lunak</option>
+<option>Kecerdasan Buatan & Data</option>
+<option>Jaringan & Keamanan Siber</option>
 
                     </select>
 

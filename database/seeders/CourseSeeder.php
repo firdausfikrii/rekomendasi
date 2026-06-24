@@ -2,60 +2,108 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Course;
 
 class CourseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Course::insert([
+        $courses = [
 
+            // REKAYASA PERANGKAT LUNAK
             [
-                'kode' => 'MK01',
+                'kode' => 'RPL01',
+                'nama' => 'Bengkel Pemrograman Framework',
+                'bidang' => 'Rekayasa Perangkat Lunak',
+                'sks' => 3
+            ],
+            [
+                'kode' => 'RPL02',
+                'nama' => 'Pemrograman Berorientasi Objek Lanjut',
+                'bidang' => 'Rekayasa Perangkat Lunak',
+                'sks' => 3
+            ],
+            [
+                'kode' => 'RPL03',
+                'nama' => 'Pemrograman Game',
+                'bidang' => 'Rekayasa Perangkat Lunak',
+                'sks' => 3
+            ],
+            [
+                'kode' => 'RPL04',
+                'nama' => 'Arsitektur Perangkat Lunak & Design Pattern',
+                'bidang' => 'Rekayasa Perangkat Lunak',
+                'sks' => 3
+            ],
+            [
+                'kode' => 'RPL05',
+                'nama' => 'Mobile Application Development',
+                'bidang' => 'Rekayasa Perangkat Lunak',
+                'sks' => 3
+            ],
+
+            // AI & DATA
+            [
+                'kode' => 'AI01',
+                'nama' => 'Data Warehouse',
+                'bidang' => 'Kecerdasan Buatan & Data',
+                'sks' => 3
+            ],
+            [
+                'kode' => 'AI02',
                 'nama' => 'Machine Learning',
-                'bidang' => 'AI',
-                'sks' => 2
+                'bidang' => 'Kecerdasan Buatan & Data',
+                'sks' => 3
+            ],
+            [
+                'kode' => 'AI03',
+                'nama' => 'Digital Image Processing',
+                'bidang' => 'Kecerdasan Buatan & Data',
+                'sks' => 3
+            ],
+            [
+                'kode' => 'AI04',
+                'nama' => 'Pengenalan Pola (Pattern Recognition)',
+                'bidang' => 'Kecerdasan Buatan & Data',
+                'sks' => 3
+            ],
+            [
+                'kode' => 'AI05',
+                'nama' => 'Pemrosesan Bahasa Alami',
+                'bidang' => 'Kecerdasan Buatan & Data',
+                'sks' => 3
             ],
 
+            // JARINGAN & KEAMANAN
             [
-                'kode' => 'MK02',
-                'nama' => 'Deep Learning',
-                'bidang' => 'AI',
-                'sks' => 2
+                'kode' => 'NET01',
+                'nama' => 'Keamanan Jaringan',
+                'bidang' => 'Jaringan & Keamanan Siber',
+                'sks' => 3
             ],
-
             [
-                'kode' => 'MK03',
-                'nama' => 'Business Intelligence',
-                'bidang' => 'Data Science',
-                'sks' => 2
+                'kode' => 'NET02',
+                'nama' => 'Digital Forensics / Network Forensics',
+                'bidang' => 'Jaringan & Keamanan Siber',
+                'sks' => 3
             ],
-
             [
-                'kode' => 'MK04',
-                'nama' => 'Cyber Security',
-                'bidang' => 'Security',
-                'sks' => 2
+                'kode' => 'NET03',
+                'nama' => 'Cloud Computing & Virtualization',
+                'bidang' => 'Jaringan & Keamanan Siber',
+                'sks' => 3
             ],
-
             [
-                'kode' => 'MK05',
-                'nama' => 'Internet of Things',
-                'bidang' => 'IoT',
-                'sks' => 2
+                'kode' => 'NET04',
+                'nama' => 'Pemrograman IoT',
+                'bidang' => 'Jaringan & Keamanan Siber',
+                'sks' => 3
             ],
+        ];
 
-            [
-                'kode' => 'MK06',
-                'nama' => 'ERP',
-                'bidang' => 'Business',
-                'sks' => 2
-            ]
-        ]);
+        foreach ($courses as $course) {
+            Course::create($course);
+        }
     }
 }
